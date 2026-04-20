@@ -57,7 +57,7 @@ export const Methodology = () => {
                   transition={{ delay: i * 0.1 }}
                   className="flex gap-6"
                 >
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-slate-900 border border-slate-800 flex items-center justify-center shadow-inner">
                     <step.icon className="text-emerald-700 w-6 h-6" />
                   </div>
                   <div>
@@ -75,7 +75,7 @@ export const Methodology = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative p-8 rounded-3xl bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-hidden group"
+              className="relative p-10 rounded-[3rem] bg-slate-900/40 backdrop-blur-xl border border-white/10 shadow-[0_0_50px_rgba(0,0,0,0.3)] overflow-hidden group"
             >
               {/* Glass Reflection Effect */}
               <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none" />

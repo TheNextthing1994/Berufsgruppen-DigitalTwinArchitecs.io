@@ -20,7 +20,7 @@ const Tile: React.FC<{ text: string; onClick: (text: string) => void }> = ({ tex
       onClick={() => onClick(text)}
       style={{ perspective: "1000px" }}
       className={cn(
-        "px-10 py-5 rounded-2xl bg-gradient-to-br from-slate-900/80 via-slate-950/90 to-emerald-950/30 backdrop-blur-xl border border-white/10",
+        "px-10 py-5 rounded-full bg-gradient-to-br from-slate-900/80 via-slate-950/90 to-emerald-950/30 backdrop-blur-xl border border-white/10",
         "text-white font-semibold whitespace-nowrap transition-all duration-500 text-sm md:text-base cursor-pointer shrink-0 relative group overflow-hidden",
         "shadow-[0_12px_40px_rgba(0,0,0,0.7)] hover:shadow-[0_25px_50px_rgba(16,185,129,0.3)]",
         "flex items-center justify-center"
@@ -30,7 +30,7 @@ const Tile: React.FC<{ text: string; onClick: (text: string) => void }> = ({ tex
       <div className="absolute inset-0 bg-gradient-to-br from-white/10 via-transparent to-transparent pointer-events-none opacity-50" />
       
       {/* Subtle Inner Glow */}
-      <div className="absolute inset-0 border border-emerald-500/5 rounded-2xl pointer-events-none" />
+      <div className="absolute inset-0 border border-emerald-500/5 rounded-full pointer-events-none" />
       
       {/* Animated Green Glow on Hover */}
       <div className="absolute inset-0 bg-emerald-500/0 group-hover:bg-emerald-500/10 transition-colors duration-500" />
@@ -62,7 +62,7 @@ export const ScrollingTiles: React.FC<ScrollingTilesProps> = ({ onTileClick }) =
   const duplicatedRow2 = [...row2, ...row2];
 
   return (
-    <div className="pb-24 pt-0 overflow-hidden flex flex-col gap-8 relative -mt-32 z-20">
+    <div className="pb-24 pt-0 overflow-hidden flex flex-col gap-8 relative -mt-16 md:-mt-24 lg:-mt-32 z-20">
       {/* Background Glows for 3D depth */}
       <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[300px] bg-emerald-900/10 blur-[120px] rounded-full pointer-events-none" />
       <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[300px] bg-blue-900/5 blur-[120px] rounded-full pointer-events-none" />

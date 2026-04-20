@@ -10,7 +10,6 @@ export interface TranslationType {
     strategy: string;
   };
   hero: {
-    badge: string;
     title1: string;
     title2: string;
     title3: string;
@@ -87,7 +86,6 @@ export const translations: Record<Language, TranslationType> = {
       strategy: 'Strategiegespräch'
     },
     hero: {
-      badge: 'Standardisierung von Wissen',
       title1: 'Wir transformieren',
       title2: 'Fachwissen',
       title3: 'in digitale Standards.',
@@ -149,7 +147,7 @@ export const translations: Record<Language, TranslationType> = {
       send: 'Senden',
       close: 'Schließen',
       cta: 'Anfrage mit Chat-Verlauf senden',
-      systemPrompt: 'Du bist ein Experte von DigitalTwinArchitecs.io. Dein Ziel ist es, dem Nutzer zu erklären, wie ein Digitaler Zwilling und KI-Automatisierung speziell für seine Branche ({industry}) helfen kann. Sei professionell, innovativ und lösungsorientiert. Erwähne VayFlow und unsere Expertise in Wissens-Standardisierung. Am Ende des Gesprächs soll der Nutzer auf den Button klicken, um ein Strategiegespräch zu vereinbaren.',
+      systemPrompt: 'Du bist ein spezialisierter KI-Experte von DigitalTwinArchitecs.io für die Branche: {industry}. DEINE STRIKTE REGEL: Antworte immer extrem kurz und prägnant (maximal 2-3 Sätze). Du darfst ausschließlich über Themen sprechen, die mit der Digitalisierung, Automatisierung und Wissens-Standardisierung im Bereich {industry} zu tun haben. Wenn der Nutzer fachfremde Fragen stellt (z.B. Popkultur, Spongebob), lehne diese sofort und kurz ab und frage nach einem Bezug zu {industry}. Dein Ziel: Kurze, wertvolle Impulse geben und zum Strategiegespräch bewegen.',
       initialMessage: 'Hallo! Ich bin Ihr KI-Experte für {industry}. Wie kann ich Ihnen helfen, Ihr Fachwissen in einen digitalen Standard zu verwandeln?'
     },
     caseStudies: {
@@ -271,7 +269,6 @@ export const translations: Record<Language, TranslationType> = {
       strategy: 'Стратегия'
     },
     hero: {
-      badge: 'Стандартизация знаний',
       title1: 'Мы трансформируем',
       title2: 'Экспертизу',
       title3: 'в диджитал-стандарты.',
@@ -333,7 +330,7 @@ export const translations: Record<Language, TranslationType> = {
       send: 'Отправить',
       close: 'Закрыть',
       cta: 'Отправить запрос с историей чата',
-      systemPrompt: 'Вы эксперт DigitalTwinArchitecs.io. Ваша цель — объяснить пользователю, как Цифровой Двойник и ИИ-автоматизация могут помочь именно в его отрасли ({industry}). Будьте профессиональны, инновационны и ориентированы на решение. Упомяните VayFlow и наш опыт в стандартизации знаний. В конце разговора пользователь должен нажать кнопку, чтобы записаться на стратегическую сессию.',
+      systemPrompt: 'Вы являетесь специализированным ИИ-экспертом DigitalTwinArchitecs.io в отрасли: {industry}. ВАШЕ СТРОГОЕ ПРАВИЛО: отвечайте всегда максимально кратко и лаконично (максимум 2-3 предложения). Вы должны говорить исключительно на темы, связанные с цифровизацией, автоматизацией и стандартизацией знаний в сфере {industry}. Если пользователь задает посторонние вопросы (например, о поп-культуре или Спанч Бобе), немедленно и кратко откажите в ответе и вернитесь к теме {industry}. Ваша цель: давать короткие, ценные идеи и убеждать записаться на стратегическую сессию.',
       initialMessage: 'Здравствуйте! Я ваш ИИ-эксперт по направлению {industry}. Как я могу помочь вам превратить ваш опыт в цифровой стандарт?'
     },
     caseStudies: {

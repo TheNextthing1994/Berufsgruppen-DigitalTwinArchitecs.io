@@ -35,7 +35,7 @@ export const Header = () => {
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
         <a href="#" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-emerald-700 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-emerald-900/20">
+          <div className="w-10 h-10 bg-emerald-700 rounded-xl flex items-center justify-center group-hover:rotate-12 transition-transform shadow-lg shadow-emerald-900/20">
             <Cpu className="text-slate-950 w-6 h-6" />
           </div>
           <span className="text-xl font-bold tracking-tighter text-white">

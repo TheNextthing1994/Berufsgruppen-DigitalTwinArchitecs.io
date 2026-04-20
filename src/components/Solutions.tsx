@@ -99,11 +99,11 @@ export const Solutions: React.FC<SolutionsProps> = ({ onSolutionClick }) => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                whileHover={{ y: -5, backgroundColor: 'rgba(16, 185, 129, 0.1)' }}
-                className="p-6 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col items-center text-center gap-4 transition-all group cursor-pointer w-full"
+                whileHover={{ y: -5, backgroundColor: 'rgba(16, 185, 129, 0.1)', borderColor: 'rgba(16, 185, 129, 0.3)' }}
+                className="p-8 rounded-[2.5rem] bg-slate-900/50 backdrop-blur-md border border-slate-800 flex flex-col items-center text-center gap-4 transition-all group cursor-pointer w-full shadow-lg hover:shadow-emerald-500/10"
               >
-                <div className="w-12 h-12 rounded-xl bg-slate-800 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
-                  <Icon className="text-slate-400 group-hover:text-emerald-500 w-6 h-6" />
+                <div className="w-14 h-14 rounded-2xl bg-slate-800 flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors shadow-inner">
+                  <Icon className="text-slate-400 group-hover:text-emerald-500 w-7 h-7" />
                 </div>
                 <span className="text-slate-300 font-medium group-hover:text-white transition-colors">
                   {group}

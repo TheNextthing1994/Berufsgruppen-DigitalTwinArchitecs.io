@@ -82,7 +82,7 @@ export const CaseStudies = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative h-[450px] rounded-3xl overflow-hidden border border-slate-800 bg-slate-900"
+              className="group relative h-[500px] rounded-[3rem] overflow-hidden border border-slate-800 bg-slate-900/40 backdrop-blur-sm"
             >
               <div className="absolute inset-0">
                 <img 
@@ -116,7 +116,7 @@ export const CaseStudies = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-center p-8 rounded-3xl border-2 border-dashed border-slate-800 bg-slate-900/50 text-center"
+            className="flex flex-col items-center justify-center p-12 rounded-[3.5rem] border-2 border-dashed border-slate-800 bg-slate-900/40 backdrop-blur-md text-center"
           >
             <div className="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mb-6">
               <Sparkles className="text-emerald-700 w-8 h-8" />
@@ -125,9 +125,14 @@ export const CaseStudies = () => {
             <p className="text-slate-400 mb-8">
               {t.caseStudies.missingDesc}
             </p>
-            <button className="px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-emerald-700 hover:text-white transition-all">
+            <a 
+              href="https://wa.me/436604763085" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-white text-slate-950 rounded-full font-bold hover:bg-emerald-700 hover:text-white transition-all text-center"
+            >
               {t.caseStudies.missingCta}
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>

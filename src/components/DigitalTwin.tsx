@@ -55,8 +55,8 @@ export const DigitalTwin = () => {
             className="relative"
           >
             <div className="absolute inset-0 bg-emerald-500/20 blur-[120px] rounded-full" />
-            <div className="relative p-1 rounded-[2.5rem] bg-gradient-to-br from-emerald-500/20 via-slate-800/40 to-blue-500/20 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
-              <div className="bg-slate-950/90 rounded-[2.4rem] p-10 overflow-hidden relative">
+            <div className="relative p-1 rounded-[3.5rem] bg-gradient-to-br from-emerald-500/20 via-slate-800/40 to-blue-500/20 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
+              <div className="bg-slate-950/90 rounded-[3.4rem] p-10 overflow-hidden relative">
                 {/* Simulated Data Interface */}
                 <div className="flex items-center justify-between mb-12 border-b border-white/5 pb-6">
                   <div className="flex gap-3">

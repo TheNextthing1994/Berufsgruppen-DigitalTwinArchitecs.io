@@ -28,7 +28,7 @@ export const IndustrySolutionsModal: React.FC<IndustrySolutionsModalProps> = ({ 
         initial={{ opacity: 0, scale: 0.95, y: 40 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 40 }}
-        className="relative w-full max-w-4xl bg-slate-900 border border-white/10 rounded-[2rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]"
+        className="relative w-full max-w-4xl bg-slate-900 border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)]"
       >
         {/* Decorative Background */}
         <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
@@ -60,7 +60,7 @@ export const IndustrySolutionsModal: React.FC<IndustrySolutionsModalProps> = ({ 
             <div className="mt-12">
               <button
                 onClick={() => onStartChat(industry!)}
-                className="group w-full py-5 bg-emerald-700 text-white rounded-2xl font-bold text-lg hover:bg-emerald-600 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-emerald-900/40"
+                className="group w-full py-5 bg-emerald-700 text-white rounded-full font-bold text-lg hover:bg-emerald-600 transition-all flex items-center justify-center gap-3 shadow-2xl shadow-emerald-900/40"
               >
                 <Bot className="w-6 h-6" />
                 {language === 'de' ? 'Experten-Chat' : 'Чат с экспертом'}
@@ -83,7 +83,7 @@ export const IndustrySolutionsModal: React.FC<IndustrySolutionsModalProps> = ({ 
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.2 + i * 0.1 }}
-                  className="group relative p-6 rounded-2xl bg-white/5 border border-white/5 hover:border-emerald-500/30 transition-all duration-500"
+                  className="group relative p-6 rounded-[1.5rem] bg-white/5 border border-white/5 hover:border-emerald-500/30 transition-all duration-500"
                 >
                   <div className="flex items-start gap-4">
                     <div className="mt-1.5 w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] group-hover:scale-125 transition-transform" />
@@ -98,7 +98,7 @@ export const IndustrySolutionsModal: React.FC<IndustrySolutionsModalProps> = ({ 
               ))}
             </div>
 
-            <div className="mt-12 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
+            <div className="mt-12 p-6 rounded-[1.5rem] bg-emerald-500/5 border border-emerald-500/10">
               <p className="text-sm text-emerald-400/80 italic">
                 {language === 'de'
                   ? 'Dies sind nur Beispiele. In unserem Chat können wir Ihre spezifischen Anforderungen im Detail besprechen.'

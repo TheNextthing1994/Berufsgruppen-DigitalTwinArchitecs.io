@@ -11,6 +11,7 @@ import { DigitalTwin } from './components/DigitalTwin';
 import { Solutions } from './components/Solutions';
 import { SolutionChat } from './components/SolutionChat';
 import { IndustrySolutionsModal } from './components/IndustrySolutionsModal';
+import { SideChatTrigger } from './components/SideChatTrigger';
 import { motion, AnimatePresence } from 'motion/react';
 import { Header } from './components/Header';
 
@@ -30,11 +31,18 @@ export default function App() {
     setActiveIndustry(industry);
   };
 
+  const handleGlobalChatTrigger = () => {
+    if (!activeIndustry) {
+      setActiveIndustry('DigitalTwinArchitects');
+    }
+  };
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-slate-950 text-slate-200 selection:bg-emerald-700 selection:text-white relative">
         <ParticleWave />
         <Header />
+        <SideChatTrigger onChatClick={handleGlobalChatTrigger} />
         <main className="relative z-10">
           <Hero onTileClick={setPrefilledMessage} />
           <ScrollingTiles onTileClick={setSelectedIndustryForSolutions} />
