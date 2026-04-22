@@ -11,22 +11,24 @@ import {
 } from 'recharts';
 import { motion, AnimatePresence } from 'motion/react';
 import { Info, X, ChevronRight } from 'lucide-react';
-
-const data = [
-  { subject: 'Management', A: 85, B: 18, fullMark: 100, details: 'KI unterstützt strategische Entscheidungen durch prädiktive Analysen, während menschliche Führung für Vision und Kultur unverzichtbar bleibt.' },
-  { subject: 'Finanzen', A: 92, B: 22, fullMark: 100, details: 'Automatisierte Risikoanalyse und algorithmischer Handel sind bereits Standard, doch komplexe Beratung bleibt menschlich.' },
-  { subject: 'IT & Software', A: 95, B: 35, fullMark: 100, details: 'KI-gestützte Code-Generierung und Systemüberwachung transformieren die Softwareentwicklung grundlegend.' },
-  { subject: 'Ingenieurwesen', A: 78, B: 12, fullMark: 100, details: 'Generatives Design und Simulationen beschleunigen Innovationszyklen in der Produktentwicklung.' },
-  { subject: 'Recht & Compliance', A: 88, B: 10, fullMark: 100, details: 'Die Analyse riesiger Dokumentenmengen und Rechercheaufgaben werden durch LLMs massiv effizienter.' },
-  { subject: 'Bildung', A: 75, B: 15, fullMark: 100, details: 'Personalisiertes Lernen und adaptive Curricula ermöglichen eine neue Ära der individuellen Wissensvermittlung.' },
-  { subject: 'Medien & Design', A: 82, B: 25, fullMark: 100, details: 'Generative KI revolutioniert die visuelle Erstellung und das Storytelling in Rekordzeit.' },
-  { subject: 'Gesundheitswesen', A: 65, B: 8, fullMark: 100, details: 'KI-gestützte Diagnostik verbessert die Präzision, während die direkte Patientenpflege menschlich bleibt.' },
-  { subject: 'Vertrieb', A: 72, B: 14, fullMark: 100, details: 'Prädiktive Lead-Generierung und automatisierte Kundenansprache steigern die Konversionsraten.' },
-  { subject: 'Verwaltung', A: 90, B: 28, fullMark: 100, details: 'Standardisierte Prozesse und Datenmanagement bieten das höchste Potenzial für sofortige Automatisierung.' },
-];
+import { useLanguage } from '../contexts/LanguageContext';
 
 export const RadarChartSection = () => {
+  const { t } = useLanguage();
   const [selectedCategory, setSelectedCategory] = useState<any>(null);
+
+  const data = [
+    { subject: t.radar.labels.management, A: 85, B: 18, fullMark: 100, details: t.radar.details.management },
+    { subject: t.radar.labels.finances, A: 92, B: 22, fullMark: 100, details: t.radar.details.finances },
+    { subject: t.radar.labels.it, A: 95, B: 35, fullMark: 100, details: t.radar.details.it },
+    { subject: t.radar.labels.engineering, A: 78, B: 12, fullMark: 100, details: t.radar.details.engineering },
+    { subject: t.radar.labels.legal, A: 88, B: 10, fullMark: 100, details: t.radar.details.legal },
+    { subject: t.radar.labels.education, A: 75, B: 15, fullMark: 100, details: t.radar.details.education },
+    { subject: t.radar.labels.media, A: 82, B: 25, fullMark: 100, details: t.radar.details.media },
+    { subject: t.radar.labels.health, A: 65, B: 8, fullMark: 100, details: t.radar.details.health },
+    { subject: t.radar.labels.sales, A: 72, B: 14, fullMark: 100, details: t.radar.details.sales },
+    { subject: t.radar.labels.admin, A: 90, B: 28, fullMark: 100, details: t.radar.details.admin },
+  ];
 
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
@@ -37,21 +39,21 @@ export const RadarChartSection = () => {
             <div className="flex items-center justify-between gap-8">
               <span className="text-slate-400 text-xs flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                Potenzial
+                {t.radar.potential}
               </span>
               <span className="text-emerald-400 font-mono font-bold">{payload[0].value}%</span>
             </div>
             <div className="flex items-center justify-between gap-8">
               <span className="text-slate-400 text-xs flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
-                Nutzung
+                {t.radar.usage}
               </span>
               <span className="text-rose-400 font-mono font-bold">{payload[1].value}%</span>
             </div>
           </div>
           <div className="mt-4 pt-2 border-t border-slate-800 flex items-center gap-2 text-[9px] text-slate-500 uppercase tracking-widest">
             <ChevronRight className="w-3 h-3 text-emerald-500" />
-            Klicken für Analyse
+            {t.radar.analysis}
           </div>
         </div>
       );
@@ -60,17 +62,15 @@ export const RadarChartSection = () => {
   };
 
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center relative p-4">
-      <div className="w-full h-[450px] md:h-[550px] relative">
-        {/* Pulsating background glow for the chart */}
-        <div className="absolute inset-0 bg-emerald-500/5 rounded-full blur-[100px] animate-pulse pointer-events-none" />
-        
+    <div className="w-full h-full flex flex-col items-center justify-center relative p-0 overflow-visible">
+      <div className="w-full h-full relative flex items-center justify-center">
         <ResponsiveContainer width="100%" height="100%">
           <RadarChart 
             cx="50%" 
-            cy="50%" 
-            outerRadius="75%" 
+            cy="45%" 
+            outerRadius="62%" 
             data={data} 
+            margin={{ top: 20, right: 100, bottom: 40, left: 100 }}
             onClick={(e: any) => e && setSelectedCategory(e.activePayload?.[0]?.payload)}
           >
             <defs>
@@ -86,12 +86,12 @@ export const RadarChartSection = () => {
             <PolarGrid stroke="#1e293b" strokeDasharray="3 3" />
             <PolarAngleAxis 
               dataKey="subject" 
-              tick={{ fill: '#64748b', fontSize: 11, fontWeight: 500 }}
+              tick={{ fill: '#94a3b8', fontSize: 13, fontWeight: 700 }}
             />
             <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#10b981', strokeWidth: 1 }} />
             <Radar
-              name="Theoretisches Potenzial"
+              name={t.radar.potential}
               dataKey="A"
               stroke="#10b981"
               strokeWidth={2}
@@ -101,7 +101,7 @@ export const RadarChartSection = () => {
               animationDuration={2000}
             />
             <Radar
-              name="Aktuelle Nutzung"
+              name={t.radar.usage}
               dataKey="B"
               stroke="#f43f5e"
               strokeWidth={3}
@@ -113,10 +113,18 @@ export const RadarChartSection = () => {
             />
             <Legend 
               verticalAlign="bottom" 
-              height={36}
+              height={30}
               iconType="circle"
-              wrapperStyle={{ paddingTop: '30px' }}
-              formatter={(value) => <span className="text-slate-500 text-[10px] uppercase tracking-widest font-bold ml-2">{value}</span>}
+              wrapperStyle={{ bottom: 0 }}
+              formatter={(value) => {
+                const isPotential = value === t.radar.potential;
+                const colorClass = isPotential ? "text-emerald-400/80" : "text-rose-400/80";
+                return (
+                  <span className={`${colorClass} text-[11px] uppercase tracking-[0.2em] font-mono font-bold ml-2`}>
+                    {value}
+                  </span>
+                );
+              }}
             />
           </RadarChart>
         </ResponsiveContainer>
@@ -138,7 +146,7 @@ export const RadarChartSection = () => {
                 </div>
                 <div>
                   <h4 className="text-white font-bold text-lg leading-none">{selectedCategory.subject}</h4>
-                  <p className="text-slate-500 text-[10px] uppercase tracking-widest mt-1">Tiefenanalyse</p>
+                  <p className="text-slate-500 text-[10px] uppercase tracking-widest mt-1">{t.radar.deepAnalysis}</p>
                 </div>
               </div>
               <button 
@@ -156,7 +164,7 @@ export const RadarChartSection = () => {
             <div className="grid grid-cols-2 gap-6">
               <div className="relative group">
                 <div className="absolute -inset-2 bg-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <p className="text-slate-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Theoretisches Potenzial</p>
+                <p className="text-slate-500 text-[9px] uppercase tracking-widest mb-2 font-bold">{t.radar.potential}</p>
                 <div className="flex items-end gap-2">
                   <p className="text-emerald-400 font-bold text-3xl font-mono">{selectedCategory.A}%</p>
                   <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden mb-2">
@@ -170,7 +178,7 @@ export const RadarChartSection = () => {
               </div>
               <div className="relative group">
                 <div className="absolute -inset-2 bg-rose-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                <p className="text-slate-500 text-[9px] uppercase tracking-widest mb-2 font-bold">Aktuelle Nutzung</p>
+                <p className="text-slate-500 text-[9px] uppercase tracking-widest mb-2 font-bold">{t.radar.usage}</p>
                 <div className="flex items-end gap-2">
                   <p className="text-rose-400 font-bold text-3xl font-mono">{selectedCategory.B}%</p>
                   <div className="flex-1 h-1.5 bg-slate-800 rounded-full overflow-hidden mb-2">
@@ -187,10 +195,16 @@ export const RadarChartSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="mt-4 text-center">
-        <p className="text-slate-600 text-[10px] uppercase tracking-[0.2em] font-medium">
-          Datenquelle: Labor Market Impacts of AI (Anthropic Research)
-        </p>
+      <div className="absolute bottom-[100px] text-center w-full z-30">
+        <a 
+          href="https://www.anthropic.com/research/labor-market-impacts"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ backgroundColor: '#10100f', borderColor: '#bae1cd' }}
+          className="text-[#94a3b8] hover:text-emerald-400 text-[12px] uppercase tracking-[0.2em] font-mono border px-3 py-1.5 rounded-lg inline-block transition-colors cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+        >
+          {t.radar.source}
+        </a>
       </div>
     </div>
   );

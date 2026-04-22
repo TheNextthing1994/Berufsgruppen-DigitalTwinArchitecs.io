@@ -2,6 +2,20 @@ import React, { useState, useEffect } from 'react';
 import { Mail, Phone, MapPin, Linkedin, Twitter, Github } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
+const TowerIcon = ({ className }: { className?: string }) => (
+  <svg 
+    viewBox="0 0 24 24" 
+    fill="currentColor" 
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M8 22L10.5 2H13.5L16 22H8Z" />
+    <rect x="11.3" y="6" width="1.4" height="1" fill="rgba(0,0,0,0.5)" />
+    <rect x="11.3" y="10" width="1.4" height="1" fill="rgba(0,0,0,0.5)" />
+    <rect x="11.3" y="14" width="1.4" height="1" fill="rgba(0,0,0,0.5)" />
+  </svg>
+);
+
 export const Footer = ({ prefilledMessage }: { prefilledMessage?: string }) => {
   const { t } = useLanguage();
   const [message, setMessage] = useState('');
@@ -36,7 +50,7 @@ export const Footer = ({ prefilledMessage }: { prefilledMessage?: string }) => {
                 <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center">
                   <Mail className="text-emerald-700 w-5 h-5" />
                 </div>
-                <span>office@digitaltwinarchitecs.io</span>
+                <span>office@tassam.ai</span>
               </div>
               <div className="flex items-center gap-4 text-slate-300">
                 <div className="w-12 h-12 rounded-full bg-slate-900 flex items-center justify-center">
@@ -104,11 +118,11 @@ export const Footer = ({ prefilledMessage }: { prefilledMessage?: string }) => {
 
         <div className="flex flex-col md:flex-row items-center justify-between pt-12 border-t border-slate-900 gap-8">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-emerald-700 rounded flex items-center justify-center">
-              <span className="text-slate-950 font-bold text-xs">DT</span>
+            <div className="w-10 h-10 bg-gradient-to-br from-slate-200 to-slate-400 rounded-lg flex items-center justify-center shadow-sm border border-white/10">
+              <TowerIcon className="text-slate-800 w-6 h-6" />
             </div>
             <span className="text-slate-400 font-medium">
-              © 2026 DigitalTwinArchitecs.io
+              © 2026 Tassam.ai
             </span>
           </div>
 

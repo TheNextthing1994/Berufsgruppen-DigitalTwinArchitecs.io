@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { useLanguage } from '../contexts/LanguageContext';
-import { Cpu, Zap, Share2 } from 'lucide-react';
+import { Cpu, Clock, Coins, CheckCircle2 } from 'lucide-react';
 
 export const DigitalTwin = () => {
   const { t } = useLanguage();
 
-  const icons = [Cpu, Zap, Share2];
+  const icons = [Clock, Coins, CheckCircle2];
 
   return (
     <section id="digital-twin" className="py-32 relative overflow-hidden bg-slate-950">
@@ -35,16 +35,19 @@ export const DigitalTwin = () => {
               {t.digitalTwin.description}
             </p>
             
-            <div className="flex flex-col gap-6">
-              {t.digitalTwin.features.map((feature, i) => (
-                <div key={i} className="flex gap-4 items-start group">
-                  <div className="w-1 h-12 bg-slate-800 group-hover:bg-emerald-500 transition-colors shrink-0" />
-                  <div>
-                    <h4 className="text-white font-bold text-lg mb-1">{feature.title}</h4>
-                    <p className="text-slate-500 text-sm">{feature.desc}</p>
+            <div className="space-y-12">
+              {t.digitalTwin.features.map((feature, i) => {
+                return (
+                  <div key={i} className="group relative pl-10 border-l-2 border-slate-800 hover:border-emerald-500 transition-colors duration-500">
+                    <h4 className="text-white font-extrabold text-2xl tracking-tighter mb-4 group-hover:text-emerald-400 transition-colors">
+                      {feature.title}
+                    </h4>
+                    <p className="text-slate-500 text-lg leading-relaxed max-w-lg font-light">
+                      {feature.desc}
+                    </p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </motion.div>
 
@@ -71,7 +74,7 @@ export const DigitalTwin = () => {
                   <div className="flex justify-between items-end">
                     <div>
                       <div className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest mb-2">Efficiency_Gain</div>
-                      <div className="text-5xl font-light text-white tracking-tighter">+84%</div>
+                      <div className="text-5xl font-light text-white tracking-tighter">+70%</div>
                     </div>
                     <div className="text-right">
                       <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-2">Uptime</div>

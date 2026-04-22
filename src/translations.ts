@@ -2,20 +2,21 @@ export type Language = 'de' | 'ru';
 
 export interface TranslationType {
   nav: {
-    solutions: string;
-    caseStudies: string;
-    methodology: string;
-    contact: string;
     start: string;
+    consulting: string;
+    automation: string;
+    chatbot: string;
+    pricing: string;
+    faq: string;
     strategy: string;
   };
   hero: {
     title1: string;
-    title2: string;
-    title3: string;
+    rotatingWords: string[];
     subtitle: string;
     cta1: string;
     cta2: string;
+    trustMarkers: string[];
   };
   targetGroups: string[];
   industrySolutions: Record<string, string[]>;
@@ -73,25 +74,89 @@ export interface TranslationType {
     };
     automationTasks: string[];
   };
+  roi: {
+    title: string;
+    subtitle: string;
+    cards: {
+      title: string;
+      desc: string;
+      impact: string;
+    }[];
+  };
+  radar: {
+    title: string;
+    labels: Record<string, string>;
+    details: Record<string, string>;
+    potential: string;
+    usage: string;
+    analysis: string;
+    deepAnalysis: string;
+    source: string;
+  };
+  quiz: {
+    titlePrefix: string;
+    titleHighlight: string;
+    subtitle: string;
+    step: string;
+    next: string;
+    back: string;
+    send: string;
+    questions: {
+      goal: {
+        title: string;
+        options: Record<string, string>;
+      };
+      size: {
+        title: string;
+        options: Record<string, string>;
+      };
+      timing: {
+        title: string;
+        options: Record<string, string>;
+      };
+      budget: {
+        title: string;
+        options: Record<string, string>;
+      };
+      contact: {
+        title: string;
+        subtitle: string;
+        name: string;
+        namePlaceholder: string;
+        email: string;
+        emailPlaceholder: string;
+        company: string;
+        companyPlaceholder: string;
+        phone: string;
+        phonePlaceholder: string;
+        cta: string;
+      };
+    };
+  };
 }
 
 export const translations: Record<Language, TranslationType> = {
   de: {
     nav: {
-      solutions: 'Lösungen',
-      caseStudies: 'Case Studies',
-      methodology: 'Team-Methodik',
-      contact: 'Kontakt',
-      start: 'Starten',
-      strategy: 'Strategiegespräch'
+      start: 'Start',
+      consulting: 'KI-Beratung',
+      automation: 'Automatisierung',
+      chatbot: 'Chatbot',
+      pricing: 'Preise',
+      faq: 'FAQ',
+      strategy: 'Potenzial-Check'
     },
     hero: {
-      title1: 'Wir transformieren',
-      title2: 'Fachwissen',
-      title3: 'in digitale Standards.',
-      subtitle: 'Ihr Team für KI-Apps, automatisierte Workflows und intelligente Sprachsysteme. Wir bauen keine Software – wir bauen Ihre digitale Belegschaft.',
-      cta1: 'Strategiegespräch vereinbaren',
-      cta2: 'Unsere Expertisen entdecken'
+      title1: 'Wir machen Ihren Betrieb',
+      rotatingWords: ['zukunftssicher.', 'skalierbar.', 'wettbewerbsfähig.', 'effizient.'],
+      subtitle: 'Ihr Team für intelligente Automatisierung. Wir verwandeln Ihre täglichen Abläufe in digitale Mitarbeiter, die 24/7 für Sie arbeiten. Ach ja, und ganz "nebenbei" bauen wir auch noch super Apps und setzen Websites auf – falls Ihnen KI allein zu wenig ist.',
+      cta1: 'Potenzial-Check starten',
+      cta2: "So funktioniert's",
+      trustMarkers: [
+        'Proof-of-Concept in 5 Tagen',
+        'ISO 27001',
+        'DSGVO-konform'
+      ]
     },
     targetGroups: [
       'Hautärzte', 'Frisöre', 'Online Shop Owner', 'Elektriker', 'Büromitarbeiter',
@@ -147,7 +212,7 @@ export const translations: Record<Language, TranslationType> = {
       send: 'Senden',
       close: 'Schließen',
       cta: 'Anfrage mit Chat-Verlauf senden',
-      systemPrompt: 'Du bist ein spezialisierter KI-Experte von DigitalTwinArchitecs.io für die Branche: {industry}. DEINE STRIKTE REGEL: Antworte immer extrem kurz und prägnant (maximal 2-3 Sätze). Du darfst ausschließlich über Themen sprechen, die mit der Digitalisierung, Automatisierung und Wissens-Standardisierung im Bereich {industry} zu tun haben. Wenn der Nutzer fachfremde Fragen stellt (z.B. Popkultur, Spongebob), lehne diese sofort und kurz ab und frage nach einem Bezug zu {industry}. Dein Ziel: Kurze, wertvolle Impulse geben und zum Strategiegespräch bewegen.',
+      systemPrompt: 'Du bist ein spezialisierter KI-Experte von Tassam.ai für die Branche: {industry}. DEINE STRIKTE REGEL: Antworte immer extrem kurz und prägnant (maximal 2-3 Sätze). Du darfst ausschließlich über Themen sprechen, die mit der Digitalisierung, Automatisierung und Wissens-Standardisierung im Bereich {industry} zu tun haben. Wenn der Nutzer fachfremde Fragen stellt (z.B. Popkultur, Spongebob), lehne diese sofort und kurz ab und frage nach einem Bezug zu {industry}. Dein Ziel: Kurze, wertvolle Impulse geben und zum Strategiegespräch bewegen.',
       initialMessage: 'Hallo! Ich bin Ihr KI-Experte für {industry}. Wie kann ich Ihnen helfen, Ihr Fachwissen in einen digitalen Standard zu verwandeln?'
     },
     caseStudies: {
@@ -257,24 +322,143 @@ export const translations: Record<Language, TranslationType> = {
         'Berichte erstellen',
         'Rechnungen prüfen'
       ]
+    },
+    roi: {
+      title: 'Warum KI-Automatisierung?',
+      subtitle: 'Geschäftsprozesse automatisieren bedeutet mehr als nur Effizienzsteigerung – es ist Ihr strategischer Marktvorteil.',
+      cards: [
+        {
+          title: 'Zeit-Elite: Maximale Freiheit',
+          desc: 'Wir überführen Ihre wertvollsten Ressourcen – Zeit und Fachwissen – in einen neuen Standard. Ihr Digitaler Zwilling agiert als autonomer Teil Ihrer Belegschaft und entlastet Ihr Kernteam dort, wo Routine bisher wertvolle Kapasitäten gebunden hat.\n\nIntelligentes Postfach-Management: E-Mails werden nicht nur empfangen, sondern sofort kategorisiert, nach Relevanz priorisiert und für die Bearbeitung vorbereitet.\n\nReaktionsgeschwindigkeit 24/7: Kundenanfragen werden unmittelbar und mit einer persönlichen, präzisen Note beantwortet – ohne Wartezeiten.\n\nNahtlose Koordination: Terminanfragen und Abstimmungsprozesse erfolgen vollautomatisch und synchron mit Ihren bestehenden Systemen.\n\nPräzise Datenverarbeitung: Die Extraktion von Informationen aus komplexen Dokumenten verkürzt sich von Stunden auf wenige Sekunden.\n\nDas Ergebnis: Eine messbare Entlastung von bis zu 70 % bei administrativen Routineaufgaben. Wir schaffen den Freiraum für Ihr strategisches Wachstum.',
+          impact: '70% Zeitgewinn'
+        },
+        {
+          title: 'Grenzenlose Skalierung',
+          desc: 'Manuelle Prozesse treiben Kosten durch Fehler und mangelnde Skalierbarkeit. KI skaliert beliebig ohne lineare Kostensteigerung.\n\nROI-Beispiele: 1.000 Anfragen zum Bruchteil der Kosten eines Teams. Automatisierte Rechnungsprüfung eliminiert Outsourcing-Kosten. Lead-Qualifizierung reduziert Vertriebskosten um 40%.\n\nAmortisation: Typischerweise innerhalb von 3-6 Monaten.',
+          impact: 'ROI in 3-6 Monaten'
+        },
+        {
+          title: 'Null-Fehler-Architektur',
+          desc: 'Menschliche Fehler bei Monotonie kosten Vertrauen. Ihr Zwilling arbeitet mit konstanter Präzision – unabhängig von Auslastung oder Ermüdung.\n\nMessbare Verbesserung: Datenerfassung erreicht 99,5%+ Genauigkeit. Die KI erkennt Anomalien, die Menschen übersehen. Compliance-Regeln werden zu 100% ohne Ausnahmen eingehalten.\n\nStatus: Absolut konsistent & zuverlässig.',
+          impact: '99,5%+ Genauigkeit'
+        }
+      ]
+    },
+    radar: {
+      title: 'KI-Potenzial',
+      labels: {
+        management: 'Management',
+        finances: 'Finanzen',
+        it: 'IT & Software',
+        engineering: 'Ingenieurwesen',
+        legal: 'Recht & Compliance',
+        education: 'Bildung',
+        media: 'Medien & Design',
+        health: 'Gesundheitswesen',
+        sales: 'Vertrieb',
+        admin: 'Verwaltung'
+      },
+      details: {
+        management: 'KI unterstützt strategische Entscheidungen durch prädiktive Analysen, während menschliche Führung für Vision und Kultur unverzichtbar bleibt.',
+        finances: 'Automatisierte Risikoanalyse und algorithmischer Handel sind bereits Standard, doch komplexe Beratung bleibt menschlich.',
+        it: 'KI-gestützte Code-Generierung und Systemüberwachung transformieren die Softwareentwicklung grundlegend.',
+        engineering: 'Generatives Design und Simulationen beschleunigen Innovationszyklen in der Produktentwicklung.',
+        legal: 'Die Analyse riesiger Dokumentenmengen und Rechercheaufgaben werden durch LLMs massiv effizienter.',
+        education: 'Personalisiertes Lernen und adaptive Curricula ermöglichen eine neue Ära der individuellen Wissensvermittlung.',
+        media: 'Generative KI revolutioniert die visuelle Erstellung und das Storytelling in Rekordzeit.',
+        health: 'KI-gestützte Diagnostik verbessert die Präzision, während die direkte Patientenpflege menschlich bleibt.',
+        sales: 'Prädiktive Lead-Generierung und automatisierte Kundenansprache steigern die Konversionsraten.',
+        admin: 'Standardisierte Prozesse und Datenmanagement bieten das höchste Potenzial für sofortige Automatisierung.'
+      },
+      potential: 'Potenzial',
+      usage: 'AKTUELLE NUTZUNG',
+      analysis: 'Klicken für Analyse',
+      deepAnalysis: 'Tiefenanalyse',
+      source: 'Datenquelle: Labor Market Impacts of AI (Anthropic Research)'
+    },
+    quiz: {
+      titlePrefix: 'Finden Sie Ihre',
+      titleHighlight: 'Passende KI-Lösung',
+      subtitle: 'Beantworten Sie 4 kurze Fragen und erhalten Sie ein individuelles Angebot für Ihre KI-Automatisierung',
+      step: 'Schritt',
+      next: 'Weiter',
+      back: 'Zurück',
+      send: 'Ergebnis anfordern',
+      questions: {
+        goal: {
+          title: 'Was möchten Sie primär mit KI-Automatisierung erreichen?',
+          options: {
+            service: 'Kundensupport & Kommunikation optimieren',
+            processes: 'Interne Geschäftsprozesse automatisieren',
+            data: 'Datenanalyse & Entscheidungsfindung verbessern',
+            unsure: 'Ich bin mir noch unsicher'
+          }
+        },
+        size: {
+          title: 'Wie groß ist Ihr Unternehmen?',
+          options: {
+            small: '1-10 Mitarbeiter',
+            medium: '11-50 Mitarbeiter',
+            large: '51-200 Mitarbeiter',
+            enterprise: 'Mehr als 200 Mitarbeiter'
+          }
+        },
+        timing: {
+          title: 'Wann möchten Sie starten?',
+          options: {
+            asap: 'So schnell wie möglich',
+            short: 'In 1-3 Monaten',
+            medium: 'In 3-6 Monaten',
+            info: 'Ich möchte mich nur informieren'
+          }
+        },
+        budget: {
+          title: 'Welches Budget planen Sie ein?',
+          options: {
+            low: 'Unter 5.000 €',
+            mid: '5.000 - 15.000 €',
+            high: '15.000 - 50.000 €',
+            veryHigh: 'Über 50.000 €',
+            unsure: 'Bin mir noch unsicher'
+          }
+        },
+        contact: {
+          title: 'Fast geschafft!',
+          subtitle: 'Wohin dürfen wir Ihr individuelles Angebot senden?',
+          name: 'Ihr Name',
+          namePlaceholder: 'Max Mustermann',
+          email: 'Ihre E-Mail',
+          emailPlaceholder: 'm.mustermann@firma.de',
+          company: 'Firma (optional)',
+          companyPlaceholder: 'Ihre Firma GmbH',
+          phone: 'Telefon (optional)',
+          phonePlaceholder: '+43 664 1234567',
+          cta: 'Individuelles Angebot anfordern'
+        }
+      }
     }
   },
   ru: {
     nav: {
-      solutions: 'Решения',
-      caseStudies: 'Кейсы',
-      methodology: 'Методология',
-      contact: 'Контакт',
-      start: 'Начать',
-      strategy: 'Стратегия'
+      start: 'Главная',
+      consulting: 'ИИ-Консалтинг',
+      automation: 'Автоматизация',
+      chatbot: 'Чат-бот',
+      pricing: 'Цены',
+      faq: 'FAQ',
+      strategy: 'Потенциал-чек'
     },
     hero: {
-      title1: 'Мы трансформируем',
-      title2: 'Экспертизу',
-      title3: 'в диджитал-стандарты.',
-      subtitle: 'Ваша команда по разработке ИИ-приложений, автоматизированных рабочих процессов и интеллектуальных голосовых систем. Мы не просто создаем ПО — мы создаем вашу диджитал-команду.',
-      cta1: 'Записаться на консультацию',
-      cta2: 'Узнать больше'
+      title1: 'Мы делаем ваш бизнес',
+      rotatingWords: ['готовым к будущему.', 'масштабируемым.', 'конкурентоспособным.', 'эффективным.'],
+      subtitle: 'Ваша команда по интеллектуальной автоматизации. Мы превращаем ваши ежедневные рабочие процессы в цифровых сотрудников, работающих на вас 24/7. Ах да, и "между прочим" мы также создаем супер-приложения и запускаем веб-сайты – если одного ИИ вам недостаточно.',
+      cta1: 'Проверить ИИ-потенциал',
+      cta2: 'Кейсы',
+      trustMarkers: [
+        'Proof-of-Concept за 5 дней',
+        'ISO 27001',
+        'Соответствие GDPR'
+      ]
     },
     targetGroups: [
       'Дерматологи', 'Парикмахеры', 'Владельцы интернет-магазинов', 'Электрики', 'Офисные сотрудники',
@@ -313,15 +497,15 @@ export const translations: Record<Language, TranslationType> = {
       features: [
         {
           title: 'Извлечение знаний',
-          desc: 'Мы оцифровываем неявный опыт и делаем его доступным для ИИ-моделей.'
+          desc: 'Мы оцифровываем неявный экспертный опыт и делаем его доступным для ИИ-моделей.'
         },
         {
           title: 'Автоматизированное взаимодействие',
-          desc: 'Ваш двойник берет на себя запросы клиентов, бронирование и консультации.'
+          desc: 'Ваш двойник берет на себя запросы клиентов, бронирование встреч и консультации.'
         },
         {
           title: 'Синхронизация процессов',
-          desc: 'Бесшовная интеграция с вашими текущими CRM и ERP системами.'
+          desc: 'Бесшовная интеграция с вашими существующими CRM и ERP системами.'
         }
       ]
     },
@@ -330,7 +514,7 @@ export const translations: Record<Language, TranslationType> = {
       send: 'Отправить',
       close: 'Закрыть',
       cta: 'Отправить запрос с историей чата',
-      systemPrompt: 'Вы являетесь специализированным ИИ-экспертом DigitalTwinArchitecs.io в отрасли: {industry}. ВАШЕ СТРОГОЕ ПРАВИЛО: отвечайте всегда максимально кратко и лаконично (максимум 2-3 предложения). Вы должны говорить исключительно на темы, связанные с цифровизацией, автоматизацией и стандартизацией знаний в сфере {industry}. Если пользователь задает посторонние вопросы (например, о поп-культуре или Спанч Бобе), немедленно и кратко откажите в ответе и вернитесь к теме {industry}. Ваша цель: давать короткие, ценные идеи и убеждать записаться на стратегическую сессию.',
+      systemPrompt: 'Вы являетесь специализированным ИИ-экспертом Tassam.ai в отрасли: {industry}. ВАШЕ СТРОГОЕ ПРАВИЛО: отвечайте всегда максимально кратко и лаконично (максимум 2-3 предложения). Вы должны говорить исключительно на темы, связанные с цифровизацией, автоматизацией и стандартизацией знаний в сфере {industry}. Если пользователь задает посторонние вопросы (например, о поп-культуре или Спанч Бобе), немедленно и кратко откажите в ответе и вернитесь к теме {industry}. Ваша цель: давать короткие, ценные идеи и убеждать записаться на стратегическую сессию.',
       initialMessage: 'Здравствуйте! Я ваш ИИ-эксперт по направлению {industry}. Как я могу помочь вам превратить ваш опыт в цифровой стандарт?'
     },
     caseStudies: {
@@ -391,7 +575,7 @@ export const translations: Record<Language, TranslationType> = {
     methodology: {
       title: 'Наша методология:',
       highlight: 'VayFlow',
-      subtitle: 'От идеи до готовой системы в рекордные сроки. Мы используем нашу собственную инфраструктуру VayFlow для превращения сложных рабочих процессов в масштабируемые диджитал-стандарты.',
+      subtitle: 'От идеи до готовой системы в рекордные сроки. Мы используем нашу собственную инфраструктуру VayFlow для превращения сложных рабочих процессов в масштабируемые дигитальные стандарты.',
       steps: [
         {
           title: 'Идея и стратегия',
@@ -417,7 +601,7 @@ export const translations: Record<Language, TranslationType> = {
     },
     footer: {
       ctaTitle: 'Ваше видение.',
-      ctaHighlight: 'Диджитал-стандарт.',
+      ctaHighlight: 'Дигитальный стандарт.',
       ctaDesc: 'Давайте вместе спроектируем архитектуру вашего цифрового будущего.',
       form: {
         name: 'Имя',
@@ -440,6 +624,120 @@ export const translations: Record<Language, TranslationType> = {
         'Создание отчетов',
         'Проверка счетов'
       ]
+    },
+    roi: {
+      title: 'Почему ИИ-автоматизация?',
+      subtitle: 'Автоматизация бизнес-процессов — это больше, чем просто повышение эффективности. Это ваше стратегическое преимущество.',
+      cards: [
+        {
+          title: 'Элита времени: Максимальная свобода',
+          desc: 'Ваши эксперты ежедневно тратят часы на рутину: сортировку почты, ввод данных и координацию встреч. Ваш Цифровой Двойник берет на себя эти задачи полностью — точно, быстро и 24/7.\n\nКонкретные примеры: Автоматическая категоризация почты. Мгновенные персонализированные ответы клиентам. Ввод данных из документов за секунды вместо часов.\n\nРезультат: До 70% экономии времени на рутинных задачах.',
+          impact: '70% экономии времени'
+        },
+        {
+          title: 'Масштабирование без границ',
+          desc: 'Ручные процессы увеличивают расходы из-за ошибок и плохой масштабируемости. ИИ масштабируется без линейного роста затрат.\n\nПримеры ROI: 1000 запросов за долю стоимости команды. Автоматизация счетов исключает затраты на аутсорсинг. Квалификация лидов снижает затраты на продажи на 40%.\n\nОкупаемость: Обычно в течение 3-6 месяцев.',
+          impact: 'ROI за 3-6 месяцев'
+        },
+        {
+          title: 'Архитектура нулевых ошибок',
+          desc: 'Человеческие ошибки при монотонности стоят доверия клиентов. Ваш Двойник работает с постоянной точностью — независимо от нагрузки или усталости.\n\nИзмеримое улучшение: Точность ввода данных 99,5%+. ИИ распознает аномалии, которые пропускают люди. Правила комплаенса соблюдаются на 100% без исключений.\n\nСтатус: Абсолютная надежность и стабильность.',
+          impact: '99,5%+ точность'
+        }
+      ]
+    },
+    radar: {
+      title: 'Потенциал ИИ',
+      labels: {
+        management: 'Менеджмент',
+        finances: 'Финансы',
+        it: 'IT и ПО',
+        engineering: 'Инженерия',
+        legal: 'Право и Комлпаенс',
+        education: 'Образование',
+        media: 'Медиа и Дизайн',
+        health: 'Здравоохранение',
+        sales: 'Продажи',
+        admin: 'Администрирование'
+      },
+      details: {
+        management: 'ИИ поддерживает стратегические решения с помощью прогнозной аналитики, в то время как человеческое лидерство остается незаменимым для формирования видения и культуры.',
+        finances: 'Автоматизированный анализ рисков и алгоритмическая торговля уже стали стандартом, но сложные консультации остаются за человеком.',
+        it: 'Генерация кода с помощью ИИ и мониторинг систем коренным образом трансформируют разработку программного обеспечения.',
+        engineering: 'Генеративный дизайн и симуляции ускоряют циклы инноваций в разработке продуктов.',
+        legal: 'Анализ огромных объемов документов и исследовательские задачи становятся в разы эффективнее благодаря LLM.',
+        education: 'Персонализированное обучение и адаптивные учебные программы открывают новую эру индивидуальной передачи знаний.',
+        media: 'Генеративный ИИ революционизирует создание визуального контента и сторителлинг в рекордные сроки.',
+        health: 'Диагностика с поддержкой ИИ повышает точность, в то время как непосредственный уход за пациентами остается человеческим.',
+        sales: 'Прогнозная генерация лидов и автоматизированное взаимодействие с клиентами повышают показатели конверсии.',
+        admin: 'Стандартизированные процессы и управление данными открывают самый высокий потенциал для немедленной автоматизации.'
+      },
+      potential: 'Потенциал',
+      usage: 'ТЕКУЩЕЕ ИСПОЛЬЗОВАНИЕ',
+      analysis: 'Нажмите для анализа',
+      deepAnalysis: 'Глубокий анализ',
+      source: 'Источник данных: Labor Market Impacts of AI (Anthropic Research)'
+    },
+    quiz: {
+      titlePrefix: 'Найдите подходящее',
+      titleHighlight: 'ИИ-решение',
+      subtitle: 'Ответьте на 4 коротких вопроса и получите индивидуальное предложение по автоматизации вашего бизнеса',
+      step: 'Шаг',
+      next: 'Далее',
+      back: 'Назад',
+      send: 'Получить результат',
+      questions: {
+        goal: {
+          title: 'Чего вы в первую очередь хотите достичь с помощью ИИ-автоматизации?',
+          options: {
+            service: 'Оптимизация клиентской поддержки и коммуникации',
+            processes: 'Автоматизация внутренних бизнес-процессов',
+            data: 'Улучшение анализа данных и принятия решений',
+            unsure: 'Я пока не уверен'
+          }
+        },
+        size: {
+          title: 'Какой размер вашей компании?',
+          options: {
+            small: '1-10 сотрудников',
+            medium: '11-50 сотрудников',
+            large: '51-200 сотрудников',
+            enterprise: 'Более 200 сотрудников'
+          }
+        },
+        timing: {
+          title: 'Когда вы хотите начать?',
+          options: {
+            asap: 'Как можно скорее',
+            short: 'В течение 1-3 месяцев',
+            medium: 'В течение 3-6 месяцев',
+            info: 'Я только хочу получить информацию'
+          }
+        },
+        budget: {
+          title: 'Какой бюджет вы планируете?',
+          options: {
+            low: 'Менее 5 000 €',
+            mid: '5 000 - 15 000 €',
+            high: '15 000 - 50 000 €',
+            veryHigh: 'Более 50 000 €',
+            unsure: 'Пока не уверен'
+          }
+        },
+        contact: {
+          title: 'Почти готово!',
+          subtitle: 'Куда мы можем отправить ваше индивидуальное предложение?',
+          name: 'Ваше имя',
+          namePlaceholder: 'Иван Иванов',
+          email: 'Ваш E-Mail',
+          emailPlaceholder: 'i.ivanov@companiya.ru',
+          company: 'Компания (необязательно)',
+          companyPlaceholder: 'ООО Ваша Компания',
+          phone: 'Телефон (необязательно)',
+          phonePlaceholder: '+7 123 456 78 90',
+          cta: 'Запросить индивидуальное предложение'
+        }
+      }
     }
   }
 };
