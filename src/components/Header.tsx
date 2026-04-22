@@ -58,10 +58,10 @@ export const Header = () => {
           to="/" 
           className="flex items-center gap-2 group text-[0px] leading-[24px] font-['Georgia',_serif] text-center"
         >
-          <div className="w-14 h-14 bg-gradient-to-br from-slate-200 to-slate-400 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-slate-900/40 shrink-0 border border-white/20">
-            <TowerIcon className="text-slate-700 w-8 h-8" />
+          <div className="w-[72px] h-[72px] bg-gradient-to-br from-slate-200 to-slate-400 rounded-2xl flex items-center justify-center group-hover:rotate-6 transition-transform shadow-lg shadow-slate-900/40 shrink-0 border border-white/20">
+            <TowerIcon className="text-slate-700 w-11 h-11" />
           </div>
-          <span className="text-3xl md:text-4xl font-black tracking-tighter text-white whitespace-nowrap">
+          <span className="text-[39px] md:text-[47px] font-black tracking-tighter text-white whitespace-nowrap pl-[25px] font-['Georgia',_serif]">
             Tassam<span className="text-emerald-500">.ai</span>
           </span>
         </Link>
@@ -101,12 +101,12 @@ export const Header = () => {
             );
           })}
           
-          <div className="flex items-center gap-1.5 px-3 border-l border-white/10 ml-2 relative z-10">
+          <div className="flex items-center bg-black/40 rounded-full p-1 border border-white/5 ml-4 relative z-10">
             <button 
               onClick={() => setLanguage('de')}
               className={cn(
-                "w-8 h-8 rounded-full text-[10px] font-bold transition-all flex items-center justify-center",
-                language === 'de' ? "bg-white text-slate-950 shadow-lg" : "text-slate-500 hover:text-white"
+                "w-7 h-7 rounded-full text-[9px] font-black transition-all flex items-center justify-center",
+                language === 'de' ? "bg-slate-200 text-slate-950 shadow-sm" : "text-slate-500 hover:text-slate-300"
               )}
             >
               DE
@@ -114,8 +114,8 @@ export const Header = () => {
             <button 
               onClick={() => setLanguage('ru')}
               className={cn(
-                "w-8 h-8 rounded-full text-[10px] font-bold transition-all flex items-center justify-center",
-                language === 'ru' ? "bg-white text-slate-950 shadow-lg" : "text-slate-500 hover:text-white"
+                "w-7 h-7 rounded-full text-[9px] font-black transition-all flex items-center justify-center",
+                language === 'ru' ? "bg-slate-200 text-slate-950 shadow-sm" : "text-slate-500 hover:text-slate-300"
               )}
             >
               RU
@@ -156,7 +156,7 @@ export const Header = () => {
               ))}
               <Link
                 to="/#contact"
-                className="w-full py-3 bg-emerald-700 text-white rounded-lg text-center font-bold"
+                className="w-full py-3 bg-gradient-to-br from-emerald-500 via-emerald-600 to-blue-600 text-white rounded-lg text-center font-bold shadow-lg shadow-emerald-900/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.nav.strategy}

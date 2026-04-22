@@ -91,36 +91,36 @@ export const RadarChartSection = () => {
             <PolarRadiusAxis angle={30} domain={[0, 100]} tick={false} axisLine={false} />
             <Tooltip content={<CustomTooltip />} cursor={{ stroke: '#10b981', strokeWidth: 1 }} />
             <Radar
-              name={t.radar.potential}
-              dataKey="A"
-              stroke="#10b981"
-              strokeWidth={2}
-              fill="url(#colorA)"
-              fillOpacity={1}
-              animationBegin={0}
-              animationDuration={2000}
-            />
-            <Radar
               name={t.radar.usage}
               dataKey="B"
               stroke="#f43f5e"
               strokeWidth={3}
               fill="url(#colorB)"
               fillOpacity={1}
-              animationBegin={800}
+              animationBegin={0}
               animationDuration={2000}
               className="animate-pulse-slow"
             />
+            <Radar
+              name={t.radar.potential}
+              dataKey="A"
+              stroke="#10b981"
+              strokeWidth={2}
+              fill="url(#colorA)"
+              fillOpacity={1}
+              animationBegin={800}
+              animationDuration={2000}
+            />
             <Legend 
               verticalAlign="bottom" 
-              height={30}
+              height={50}
               iconType="circle"
-              wrapperStyle={{ bottom: 0 }}
+              wrapperStyle={{ bottom: -20 }}
               formatter={(value) => {
                 const isPotential = value === t.radar.potential;
-                const colorClass = isPotential ? "text-emerald-400/80" : "text-rose-400/80";
+                const colorClass = isPotential ? "text-emerald-500" : "text-rose-500";
                 return (
-                  <span className={`${colorClass} text-[11px] uppercase tracking-[0.2em] font-mono font-bold ml-2`}>
+                  <span className={`${colorClass} text-[10px] uppercase tracking-[0.15em] font-mono font-black ml-2 shadow-sm`}>
                     {value}
                   </span>
                 );
@@ -195,13 +195,12 @@ export const RadarChartSection = () => {
         )}
       </AnimatePresence>
 
-      <div className="absolute bottom-[100px] text-center w-full z-30">
+      <div className="absolute bottom-[90px] text-center w-full z-30">
         <a 
           href="https://www.anthropic.com/research/labor-market-impacts"
           target="_blank"
           rel="noopener noreferrer"
-          style={{ backgroundColor: '#10100f', borderColor: '#bae1cd' }}
-          className="text-[#94a3b8] hover:text-emerald-400 text-[12px] uppercase tracking-[0.2em] font-mono border px-3 py-1.5 rounded-lg inline-block transition-colors cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)]"
+          className="text-slate-400 hover:text-emerald-400 text-[10px] uppercase tracking-[0.1em] font-mono border border-white/20 bg-slate-950/80 px-4 py-2 rounded-lg inline-block transition-all duration-300 transform hover:scale-105"
         >
           {t.radar.source}
         </a>

@@ -109,7 +109,7 @@ export const Footer = ({ prefilledMessage }: { prefilledMessage?: string }) => {
                   placeholder={t.footer.form.messagePlaceholder}
                 />
               </div>
-              <button className="w-full py-4 bg-emerald-700 text-white rounded-xl font-bold text-lg hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-900/20">
+              <button className="w-full py-4 bg-gradient-to-br from-emerald-400 via-emerald-600 to-blue-600 text-white rounded-xl font-bold text-lg hover:shadow-emerald-500/20 transition-all shadow-lg shadow-emerald-900/30">
                 {t.footer.form.send}
               </button>
             </form>

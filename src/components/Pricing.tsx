@@ -101,8 +101,19 @@ export const Pricing = () => {
                 ))}
               </div>
 
-              <button className={`w-full py-4 rounded-xl font-bold transition-all ${plan.popular ? 'bg-emerald-500 text-slate-950 hover:bg-emerald-400' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-                Beratung anfordern
+              <button className={cn(
+                "w-full py-4 rounded-xl font-bold transition-all relative overflow-hidden group/price-btn border-t-2 border-l border-r border-b-2",
+                plan.popular 
+                  ? "bg-slate-950/80 border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_15px_35px_rgba(16,185,129,0.2),inset_0_2px_1px_rgba(255,255,255,0.1)] text-white" 
+                  : "bg-slate-950/40 border-slate-700 hover:border-slate-500 shadow-[0_10px_20px_rgba(0,0,0,0.3),inset_0_2px_1px_rgba(255,255,255,0.05)] text-slate-300 hover:text-white"
+              )}>
+                {/* Metallic Shine Layers */}
+                <div className={cn(
+                  "absolute inset-0 opacity-20 group-hover/price-btn:opacity-40 transition-opacity",
+                  plan.popular ? "bg-emerald-500/20" : "bg-white/5"
+                )} />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover/price-btn:animate-[shine_3s_infinite]" />
+                <span className="relative z-10">{language === 'de' ? 'Beratung anfordern' : 'Запросить консультацию'}</span>
               </button>
             </motion.div>
           ))}

@@ -17,7 +17,7 @@ interface QuizStep {
 }
 
 export const PotentialQuiz = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [currentStep, setCurrentStep] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [answers, setAnswers] = useState<Record<number, string>>({});
@@ -135,81 +135,33 @@ export const PotentialQuiz = () => {
 
         <div className="max-w-3xl mx-auto relative">
           {/* Background Glow */}
-          <div className="absolute inset-x-0 -inset-y-12 bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="absolute inset-x-0 -inset-y-12 bg-emerald-500/20 blur-[100px] rounded-full pointer-events-none" />
 
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            className="group relative p-1 rounded-[2.5rem] md:rounded-[3.5rem] bg-gradient-to-br from-emerald-500/20 via-slate-800/40 to-blue-500/20 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-emerald-500/10"
+            className="group relative p-1 rounded-[2.5rem] md:rounded-[3.5rem] bg-gradient-to-br from-emerald-500/20 via-slate-800/40 to-blue-500/20 backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl transition-all duration-700 hover:shadow-emerald-500/20"
           >
             <div className="bg-slate-950/95 rounded-[2.4rem] md:rounded-[3.4rem] overflow-hidden relative flex flex-col p-8 md:p-12">
-              {/* Progress Bar (Liquid/Water Effect) */}
-              <div className="mb-10 flex items-center gap-4">
-                <div className="w-full h-5 bg-slate-950 rounded-full overflow-hidden relative border border-emerald-500/10 shadow-[inner_0_2px_10px_rgba(0,0,0,0.5)]">
+              {/* Progress and Step Info */}
+              <div className="mb-6 flex items-end justify-between px-1">
+                <span className="text-sm font-medium text-slate-400 capitalize">
+                  {t.quiz.step} {currentStep + 1} {language === 'de' ? 'von' : 'из'} {totalSteps}
+                </span>
+                <span className="text-sm font-mono text-emerald-500 font-bold drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]">
+                  {Math.round(progress)}%
+                </span>
+              </div>
+
+              {/* Progress Bar (Simple Solid) */}
+              <div className="mb-12">
+                <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-white/5">
                   <motion.div 
                     initial={{ width: 0 }}
                     animate={{ width: `${progress}%` }}
-                    className="h-full relative transition-all duration-700 ease-out"
-                    style={{
-                      background: 'linear-gradient(to bottom, #10b981, #065f46)',
-                      boxShadow: '0 0 15px rgba(16,185,129,0.4)'
-                    }}
-                  >
-                    {/* Liquid highlights */}
-                    <div className="absolute top-0 left-0 right-0 h-[40%] bg-gradient-to-b from-white/20 to-transparent z-20" />
-                    
-                    {/* Waves */}
-                    <div className="absolute inset-0 z-10">
-                      <motion.div
-                        animate={{ x: [0, -80] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-x-0 -top-1 bottom-0 opacity-30"
-                        style={{
-                          backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 80 20\'%3E%3Cpath d=\'M0 20 V10 Q20 5 40 10 T80 10 V20 H0\' fill=\'%23ffffff\'/%3E%3C/svg%3E")',
-                          backgroundSize: '80px 100%',
-                          backgroundRepeat: 'repeat-x',
-                        }}
-                      />
-                      <motion.div
-                        animate={{ x: [-80, 0] }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="absolute inset-x-0 -top-2 bottom-0 opacity-40"
-                        style={{
-                          backgroundImage: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 80 20\'%3E%3Cpath d=\'M0 20 V12 Q20 2 40 12 T80 12 V20 H0\' fill=\'%23ffffff\'/%3E%3C/svg%3E")',
-                          backgroundSize: '80px 100%',
-                          backgroundRepeat: 'repeat-x',
-                        }}
-                      />
-                    </div>
-                    
-                    <div className="absolute inset-0 z-20 overflow-hidden">
-                      {[1, 2, 3, 4, 5].map((i) => (
-                        <motion.div
-                          key={i}
-                          initial={{ y: 20, x: `${20 * i}%`, opacity: 0 }}
-                          animate={{ 
-                            y: -20, 
-                            opacity: [0, 0.6, 0],
-                            x: [`${20 * i}%`, `${20 * i + (i % 2 === 0 ? 5 : -5)}%`]
-                          }}
-                          transition={{
-                            duration: 2 + (i % 3),
-                            repeat: Infinity,
-                            delay: i * 0.4,
-                            ease: "easeInOut"
-                          }}
-                          className="absolute w-1.5 h-1.5 bg-emerald-200 rounded-full blur-[0.5px] border border-white/20"
-                        />
-                      ))}
-                    </div>
-                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white/10 via-transparent to-transparent z-30" />
-                  </motion.div>
-                  <div className="absolute inset-0 rounded-full border border-white/10 pointer-events-none z-40" />
-                  <div className="absolute top-0 left-4 right-4 h-1 bg-white/5 rounded-full z-40" />
+                    className="h-full bg-gradient-to-r from-emerald-500 to-blue-500 shadow-[0_0_15px_rgba(16,185,129,0.4)] transition-all duration-700 ease-out"
+                  />
                 </div>
-                <span className="text-[10px] font-mono text-emerald-500 font-bold min-w-max drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]">
-                  {Math.round(progress)}%
-                </span>
               </div>
 
               <AnimatePresence mode="wait">
@@ -222,18 +174,11 @@ export const PotentialQuiz = () => {
                 >
                   {!isFormStep ? (
                     <>
-                      {/* Assistant Message Bubble */}
-                      <div className="mb-12">
-                        <div className="flex items-center gap-3 mb-4">
-                          <span className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest">D.T ASSISTENT</span>
-                          <div className="h-[1px] bg-emerald-500/20 flex-grow" />
-                        </div>
-                        <div className="bg-[#141b2b] border border-emerald-500/10 rounded-xl p-6 relative">
-                          <p className="text-slate-200 text-lg md:text-xl font-mono leading-relaxed">
-                            {steps[currentStep]?.question}
-                          </p>
-                          <div className="absolute -top-2 left-6 w-4 h-4 bg-[#141b2b] border-l border-t border-emerald-500/10 rotate-45" />
-                        </div>
+                      {/* Simple Heading instead of Bubble */}
+                      <div className="mb-10 px-1">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white tracking-tight leading-tight">
+                          {steps[currentStep]?.question}
+                        </h3>
                       </div>
 
                       <div className="space-y-4">
@@ -247,10 +192,10 @@ export const PotentialQuiz = () => {
                               onClick={() => handleOptionSelect(option.id)}
                               disabled={selectedOptionId !== null}
                               className={cn(
-                                "w-full group relative flex items-center justify-between p-5 rounded-xl border transition-all duration-300 text-left overflow-hidden",
+                                "w-full group relative flex items-center justify-between p-5 rounded-xl border-t-2 border-l border-r border-b-2 transition-all duration-300 text-left overflow-hidden",
                                 isSelected 
-                                  ? "bg-emerald-500/20 border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.2)]" 
-                                  : "bg-[#141b2b]/50 border-white/5 hover:border-emerald-500/40 hover:bg-emerald-500/5 shadow-lg",
+                                  ? "bg-emerald-500/20 border-emerald-500/60 shadow-[0_0_25px_rgba(16,185,129,0.3),inset_0_2px_1px_rgba(255,255,255,0.1)]" 
+                                  : "bg-slate-900/40 border-white/5 hover:border-emerald-500/40 hover:bg-emerald-500/5 shadow-lg",
                                 isOtherSelected && "opacity-40 grayscale-[0.5]"
                               )}
                             >
@@ -278,7 +223,7 @@ export const PotentialQuiz = () => {
                                 >
                                   <option.icon className={cn(
                                     "w-5 h-5 transition-colors",
-                                    isSelected ? "text-slate-950" : "text-slate-400 group-hover:text-emerald-500"
+                                    isSelected ? "text-slate-950" : "text-emerald-500/80 group-hover:text-emerald-500"
                                   )} />
                                 </motion.div>
                                 <span className={cn(
@@ -368,10 +313,13 @@ export const PotentialQuiz = () => {
                           whileHover={{ scale: 1.01, translateY: -2 }}
                           whileTap={{ scale: 0.98 }}
                           type="submit"
-                          className="w-full group px-10 py-5 bg-gradient-to-b from-slate-300 to-slate-500 text-slate-950 rounded-full font-extrabold text-lg border border-white/20 shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1),inset_0_4px_12px_rgba(255,255,255,0.4),inset_0_-4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_60px_-12px_rgba(255,255,255,0.2),inset_0_4px_16px_rgba(255,255,255,0.5)] transition-all duration-300 text-center flex items-center justify-center relative overflow-hidden"
+                          className="w-full group relative px-10 py-5 rounded-2xl font-black text-lg transition-all duration-500 bg-slate-950/80 backdrop-blur-xl border-t-2 border-l border-r border-b-2 border-emerald-500/30 hover:border-emerald-400/60 text-white shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(16,185,129,0.2),inset_0_2px_1px_rgba(255,255,255,0.2)] hover:shadow-[0_30px_60px_rgba(16,185,129,0.4),0_0_30px_rgba(16,185,129,0.3)] flex items-center justify-center gap-2 overflow-hidden"
                         >
-                          <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-transparent opacity-30 transition-transform duration-500 group-hover:translate-x-full" />
-                          <span className="relative z-10 flex items-center justify-center gap-2">
+                          <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 via-transparent to-blue-600/20 opacity-40 group-hover:opacity-60 transition-opacity" />
+                          <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-white/30 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-[shine_3s_infinite]" />
+                          
+                          <span className="relative z-10 flex items-center justify-center gap-2 drop-shadow-md">
                             {t.quiz.questions.contact.cta}
                           </span>
                         </motion.button>

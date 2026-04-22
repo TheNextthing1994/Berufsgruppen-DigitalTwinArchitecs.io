@@ -133,8 +133,8 @@ export const SolutionChat: React.FC<SolutionChatProps> = ({ industry, onClose, o
           
           <div className="flex items-center gap-4">
             <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-rose-500/80 shadow-[0_0_8px_rgba(244,63,94,0.4)]" />
-              <div className="w-2.5 h-2.5 rounded-full bg-amber-500/80 shadow-[0_0_8px_rgba(245,158,11,0.4)]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-blue-500/80 shadow-[0_0_8px_rgba(59,130,246,0.4)]" />
+              <div className="w-2.5 h-2.5 rounded-full bg-slate-400/80 shadow-[0_0_8px_rgba(148,163,184,0.4)]" />
               <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/80 shadow-[0_0_8px_rgba(16,185,129,0.4)]" />
             </div>
             <div className="flex flex-col">
@@ -172,7 +172,7 @@ export const SolutionChat: React.FC<SolutionChatProps> = ({ industry, onClose, o
                 <span className={`text-[9px] font-mono font-bold uppercase tracking-widest ${
                   m.role === 'user' ? 'text-blue-400' : 'text-emerald-500'
                 }`}>
-                  {m.role === 'user' ? 'Experte' : 'D.T Assistent'}
+                  {m.role === 'user' ? (language === 'de' ? 'Experte' : 'Эксперт') : 'Tassam AI'}
                 </span>
                 <div className="h-[1px] flex-1 bg-white/5" />
               </div>

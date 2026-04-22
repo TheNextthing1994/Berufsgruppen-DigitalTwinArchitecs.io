@@ -86,6 +86,13 @@ export const Hero = ({ onTileClick }: { onTileClick: (text: string) => void }) =
                   {words.reduce((a, b) => (a.length > b.length ? a : b), "")}
                 </span>
                 <div className="row-start-1 col-start-1 relative h-full">
+                  {/* Glass Background Bar for Rotating Text */}
+                  <motion.div 
+                    initial={{ opacity: 0, scaleX: 0 }}
+                    animate={{ opacity: 1, scaleX: 1 }}
+                    transition={{ duration: 1, delay: 0.5 }}
+                    className="absolute inset-x-0 top-1/2 -translate-y-1/2 h-[75%] bg-gradient-to-r from-emerald-500/20 via-white/10 to-transparent blur-2xl rounded-full z-0 pointer-events-none"
+                  />
                   <AnimatePresence mode="wait">
                     <motion.div
                       key={index}
@@ -117,24 +124,31 @@ export const Hero = ({ onTileClick }: { onTileClick: (text: string) => void }) =
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="flex flex-col sm:flex-row gap-16 pointer-events-auto relative z-40"
+              className="flex flex-col sm:flex-row gap-6 pointer-events-auto relative z-40 pl-0 lg:pl-[100px]"
             >
               <a 
-                href="#potential-quiz"
-                className="group px-10 py-5 bg-gradient-to-b from-yellow-400 to-amber-600 text-slate-950 rounded-full font-extrabold text-lg shadow-[0_20px_50px_-12px_rgba(251,191,36,0.5),inset_0_4px_12px_rgba(255,255,255,0.7),inset_0_-4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_60px_-12px_rgba(251,191,36,0.7),inset_0_4px_16px_rgba(255,255,255,0.8)] hover:-translate-y-1.5 active:scale-95 transition-all duration-300 flex items-center justify-center gap-3 relative overflow-hidden"
+                href="#potential-quiz" 
+                className="group relative px-12 py-5 rounded-full font-black text-xl transition-all duration-500 bg-slate-950/80 backdrop-blur-xl border-t-2 border-l border-r border-b-2 border-emerald-500/30 hover:border-emerald-400/60 text-white shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(16,185,129,0.2),inset_0_2px_1px_rgba(255,255,255,0.2)] hover:translate-y-[-6px] hover:shadow-[0_30px_60px_rgba(16,185,129,0.4),0_0_30px_rgba(16,185,129,0.3)] hover:scale-[1.02] active:translate-y-[2px] active:scale-[0.98] flex items-center justify-center gap-3 overflow-hidden group/btn"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/40 via-transparent to-transparent opacity-60 transition-transform duration-500 group-hover:translate-x-full" />
-                <span className="relative z-10 flex items-center gap-3">
-                  {t.hero.cta1}
-                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-                </span>
+                {/* Metallic Shine Layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/20 via-transparent to-blue-600/20 opacity-40 group-hover/btn:opacity-60 transition-opacity" />
+                <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-emerald-400/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn:animate-[shine_3s_infinite]" />
+                
+                <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wide uppercase text-sm">PotenzialCheck</span>
+                <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-2 transition-transform relative z-10 drop-shadow-md text-emerald-400" />
               </a>
+              
               <a 
                 href="#case-studies" 
-                className="group px-10 py-5 bg-gradient-to-b from-slate-300 to-slate-500 text-slate-950 rounded-full font-extrabold text-lg border border-white/20 shadow-[0_20px_50px_-12px_rgba(255,255,255,0.1),inset_0_4px_12px_rgba(255,255,255,0.4),inset_0_-4px_12px_rgba(0,0,0,0.3)] hover:shadow-[0_25px_60px_-12px_rgba(255,255,255,0.2),inset_0_4px_16px_rgba(255,255,255,0.5)] hover:-translate-y-1.5 active:scale-95 transition-all duration-300 text-center flex items-center justify-center relative overflow-hidden"
+                className="group relative px-12 py-5 rounded-full font-black text-xl transition-all duration-500 bg-slate-950/80 backdrop-blur-xl border-t-2 border-l border-r border-b-2 border-slate-500/30 hover:border-slate-400/60 text-white shadow-[0_20px_40px_rgba(0,0,0,0.4),0_0_20px_rgba(255,255,255,0.05),inset_0_2px_1px_rgba(255,255,255,0.2)] hover:translate-y-[-6px] hover:shadow-[0_30px_60px_rgba(0,0,0,0.5),0_0_30px_rgba(255,255,255,0.1)] hover:scale-[1.02] active:translate-y-[2px] active:scale-[0.98] flex items-center justify-center gap-3 overflow-hidden group/btn2"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white/30 via-transparent to-transparent opacity-30 transition-transform duration-500 group-hover:translate-x-full" />
-                <span className="relative z-10">{t.hero.cta2}</span>
+                {/* Metallic Shine Layers */}
+                <div className="absolute inset-0 bg-gradient-to-br from-slate-400/10 via-transparent to-slate-600/20 opacity-40 group-hover/btn2:opacity-60 transition-opacity" />
+                <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-slate-300/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent -translate-x-full group-hover/btn2:animate-[shine_3s_infinite]" />
+                
+                <span className="relative z-10 drop-shadow-[0_2px_4px_rgba(0,0,0,0.5)] tracking-wide uppercase text-sm">{t.hero.cta2}</span>
               </a>
             </motion.div>
 
